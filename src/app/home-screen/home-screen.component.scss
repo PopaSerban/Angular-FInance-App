@@ -1,0 +1,13 @@
+.navbar-custom {
+	/* fallback for old browsers */
+	background: #3DD9D6;
+    background-color: #3DD9D6;
+	
+	/* Chrome 10-25, Safari 5.1-6 */
+	//background: -webkit-linear-gradient(to right, #3DD9D6, #3DD9D6);
+	
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	// background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+	background-color: #3DD9D6;
+	background-image: linear-gradient(0deg, #3DD9D6 0%, #3DD9D6 100%);
+}
