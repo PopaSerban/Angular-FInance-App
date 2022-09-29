@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthenticationResponseData, AuthenticationService } from './login.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,7 +13,7 @@ import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 export class LoginComponent implements OnInit {
   isSignUp: Boolean = false;
   passwordMatch: Boolean = true;
-  AuthenticationForm: FormGroup = new FormGroup({});
+  AuthenticationForm: UntypedFormGroup = new UntypedFormGroup({});
 
   constructor(private authenticationService: AuthenticationService, private matDialog: MatDialog) { }
 
@@ -24,15 +24,15 @@ export class LoginComponent implements OnInit {
 
   private InitForm(){
     if(!this.isSignUp){
-      this.AuthenticationForm = new FormGroup({
-        'typeEmailX': new FormControl(null, [Validators.required, Validators.email]),
-        'typePasswordX': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      this.AuthenticationForm = new UntypedFormGroup({
+        'typeEmailX': new UntypedFormControl(null, [Validators.required, Validators.email]),
+        'typePasswordX': new UntypedFormControl(null, [Validators.required, Validators.minLength(6)]),
       })
     }else{
-      this.AuthenticationForm = new FormGroup({
-        'typeEmailX': new FormControl(null, [Validators.required, Validators.email]),
-        'typePasswordX': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-        'typePasswordY': new FormControl(null, [Validators.required, Validators.minLength(6)])
+      this.AuthenticationForm = new UntypedFormGroup({
+        'typeEmailX': new UntypedFormControl(null, [Validators.required, Validators.email]),
+        'typePasswordX': new UntypedFormControl(null, [Validators.required, Validators.minLength(6)]),
+        'typePasswordY': new UntypedFormControl(null, [Validators.required, Validators.minLength(6)])
       })
     }
     

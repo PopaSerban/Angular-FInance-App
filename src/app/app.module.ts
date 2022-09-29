@@ -14,25 +14,22 @@ import { HomeScreenComponent } from './home-screen/home-screen.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    DialogBoxComponent,
-    HomeScreenComponent
-  ],
-  entryComponents:[
-    DialogBoxComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatDialogModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        DialogBoxComponent,
+        HomeScreenComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatDialogModule,
+        FormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
