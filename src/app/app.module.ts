@@ -27,7 +27,7 @@ import { HomeScreenComponent } from './home-screen/home-screen.component';
         ReactiveFormsModule,
         HttpClientModule,
         MatDialogModule,
-        FormsModule
+        FormsModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
