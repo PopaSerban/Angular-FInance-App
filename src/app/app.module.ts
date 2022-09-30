@@ -10,7 +10,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
-import { HomeScreenComponent } from './home-screen/home-screen.component';
+import { MainScreenComponent } from './main-screen/main-screen.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -18,7 +24,7 @@ import { HomeScreenComponent } from './home-screen/home-screen.component';
         AppComponent,
         LoginComponent,
         DialogBoxComponent,
-        HomeScreenComponent
+        MainScreenComponent,
     ],
     imports: [
         BrowserModule,
@@ -28,6 +34,12 @@ import { HomeScreenComponent } from './home-screen/home-screen.component';
         HttpClientModule,
         MatDialogModule,
         FormsModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

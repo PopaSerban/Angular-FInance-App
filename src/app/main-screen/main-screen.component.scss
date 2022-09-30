@@ -1,0 +1,32 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+
+// .sidenav .mat-toolbar {
+//   background: inherit;
+// }
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.mat-toolbar{
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.spacer{
+  flex: 1 1 auto;
+}
+.rounded-circle{
+
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  box-shadow: 6px 1 6px rgba(0,0,0,1);
+}
