@@ -24,7 +24,11 @@
       <span class="spacer"></span>
       <div class="dropdown">
         <a href="#" id="imageDropdown" data-bs-toggle="dropdown">
-          <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" alt="Avatar" />
+          <!-- <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" alt="Avatar" /> -->
+          <div class="picture">
+            <img [src]="profilePictureUrl" class="picture-src" id="wizardPicturePreview" title="">
+          </div>
+          <!-- <img [src]="profilePictureUrl" class="rounded-circle" alt="Avatar" /> -->
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="imageDropdown">
           <li><a class="dropdown-item" href="#">Edit</a></li>

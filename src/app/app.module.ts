@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { UserEditPannelComponent } from './user-settings/user-edit-pannel/user-edit-pannel.component';
+import { ProfilePictureComponent } from './user-settings/user-edit-pannel/profile-picture/profile-picture.component';
+
 
 
 @NgModule({
@@ -25,10 +28,14 @@ import { MatListModule } from '@angular/material/list';
         LoginComponent,
         DialogBoxComponent,
         MainScreenComponent,
+        UserEditPannelComponent,
+        ProfilePictureComponent
+
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        MatProgressBarModule,
         AppRoutingModule,
         ReactiveFormsModule,
         HttpClientModule,
