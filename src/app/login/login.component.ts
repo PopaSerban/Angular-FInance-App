@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators} from '@angular/forms';
 import { Observable } from 'rxjs';
-import { AuthenticationResponseData, AuthenticationService } from './login.service';
+import { AuthenticationService } from './Services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
+import { Router } from '@angular/router';
+import { FireBaseDatabaseService } from '../Services/firebase-database.service';
+import { UserDataService } from '../Services/userData.service';
+import { UserInformation } from '../shared/models/userInformation.model';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +19,12 @@ export class LoginComponent implements OnInit {
   passwordMatch: Boolean = true;
   AuthenticationForm: UntypedFormGroup = new UntypedFormGroup({});
 
-  constructor(private authenticationService: AuthenticationService, private matDialog: MatDialog) { }
+  constructor(
+    private readonly authenticationService: AuthenticationService,
+    private readonly firebaseDatabase: FireBaseDatabaseService,
+    private readonly userDataService: UserDataService,
+    private readonly router: Router,
+    private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.InitForm();
@@ -27,7 +36,7 @@ export class LoginComponent implements OnInit {
       this.AuthenticationForm = new UntypedFormGroup({
         'typeEmailX': new UntypedFormControl(null, [Validators.required, Validators.email]),
         'typePasswordX': new UntypedFormControl(null, [Validators.required, Validators.minLength(6)]),
-      })
+      });
     }else{
       this.AuthenticationForm = new UntypedFormGroup({
         'typeEmailX': new UntypedFormControl(null, [Validators.required, Validators.email]),
@@ -61,6 +70,20 @@ export class LoginComponent implements OnInit {
       }
       authenticationObservable.subscribe(responseData=>{
         console.log(responseData);
+        if(this.isSignUp){
+          this.userDataService.LoggedUserDataPartial({Id: this.firebaseDatabase.GetUserID(email), Email:email});
+
+          this.userDataService.GetLoggedUserData.subscribe(userData=>{
+            this.firebaseDatabase.RegisterUser(userData);
+          })
+          //this.firebaseDatabase.RegisterUser(this.userDataService.GetLoggedUserData);
+        }else{
+          const id = this.firebaseDatabase.GetUserID(email)
+          this.firebaseDatabase.GetUserData(id).subscribe((response: UserInformation)=>{
+            this.userDataService.SetLoggedUserData(response);
+          });
+        }
+        this.router.navigate(['/welcome']);
       },error=>{
         this.matDialog.open(DialogBoxComponent,{
           data:error.message

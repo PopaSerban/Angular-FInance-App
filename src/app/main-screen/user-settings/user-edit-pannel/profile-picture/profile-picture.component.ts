@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { getDownloadURL } from 'firebase/storage';
+import { FireBaseDatabaseService } from 'src/app/Services/firebase-database.service';
 import { FireBaseUploadService } from 'src/app/Services/firebase-upload.service';
+import { UserDataService } from 'src/app/Services/userData.service';
+import { UserInformation } from 'src/app/shared/models/userInformation.model';
 import { UserSettingsService } from '../../user-settings.service';
 
 
@@ -16,10 +19,15 @@ export class ProfilePictureComponent implements OnInit {
   loading: boolean = false;
   loadingPercentage: number = 0;
 
-  constructor(private firebaseUploadService: FireBaseUploadService, private userSettingsService: UserSettingsService) { }
+  constructor(
+    private readonly firebaseDatabaseService: FireBaseDatabaseService,
+    private readonly userDataService: UserDataService,
+    private firebaseUploadService: FireBaseUploadService,
+    private userSettingsService: UserSettingsService) { }
 
   
   ngOnInit(): void {
+    this.InitializeUserProfilePicture();
   }
 
   OnFileSelected(eventFileObject: Event){
@@ -47,6 +55,15 @@ export class ProfilePictureComponent implements OnInit {
 
        },()=>{getDownloadURL(uploadAvatarTask.snapshot.ref).then((downloadUrl)=>{
          console.log(`File available at ${downloadUrl}`);
+         this.userDataService.GetLoggedUserData.subscribe((userData:UserInformation)=>{
+           userData.ProfilePicture = downloadUrl;
+           this.firebaseDatabaseService.UpdateUserData(userData.Id, userData).subscribe(
+             response=>{
+
+             },error=>{
+               console.log(error);
+              });
+         });
          this.userSettingsService.ChangeUserProfilePicture(downloadUrl);
          this.profilePictureUrl = downloadUrl
          this.loading = false;
@@ -54,4 +71,11 @@ export class ProfilePictureComponent implements OnInit {
       }
       
     }
+
+  private InitializeUserProfilePicture(){
+    this.userDataService.GetLoggedUserData.subscribe((userData:UserInformation)=>{
+      this.profilePictureUrl = userData.ProfilePicture;
+    });
   }
+
+}

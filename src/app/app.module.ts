@@ -8,31 +8,37 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
-import { MainScreenComponent } from './main-screen/main-screen.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { UserEditPannelComponent } from './user-settings/user-edit-pannel/user-edit-pannel.component';
-import { ProfilePictureComponent } from './user-settings/user-edit-pannel/profile-picture/profile-picture.component';
+import { UserEditPannelComponent } from './main-screen/user-settings/user-edit-pannel/user-edit-pannel.component';
+import { ProfilePictureComponent } from './main-screen/user-settings/user-edit-pannel/profile-picture/profile-picture.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { UserProfileDataComponent } from './main-screen/user-settings/user-edit-pannel/user-profile-data/user-profile-data.component';
+import { PasswordStrengthComponent } from './main-screen/password-strength/password-strength.component';
+import { LoginModule } from './login/login.module';
+import { MainScreenModule } from './main-screen/main-screen.module';
 
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        LoginComponent,
         DialogBoxComponent,
-        MainScreenComponent,
-        UserEditPannelComponent,
-        ProfilePictureComponent
 
     ],
     imports: [
+        LoginModule,
+        MainScreenModule,
         BrowserModule,
         BrowserAnimationsModule,
         MatProgressBarModule,
@@ -47,6 +53,11 @@ import { ProfilePictureComponent } from './user-settings/user-edit-pannel/profil
         MatSidenavModule,
         MatIconModule,
         MatListModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth()),
+        provideDatabase(() => getDatabase()),
+        provideFirestore(() => getFirestore()),
+        provideStorage(() => getStorage()),
     ],
     providers: [],
     bootstrap: [AppComponent]

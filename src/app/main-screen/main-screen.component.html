@@ -31,12 +31,14 @@
           <!-- <img [src]="profilePictureUrl" class="rounded-circle" alt="Avatar" /> -->
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="imageDropdown">
-          <li><a class="dropdown-item" href="#">Edit</a></li>
+          <li><a class="dropdown-item" routerLink="/editProfile" routerLinkActive="active" ariaCurrentWhenActive="page">Edit</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
           <li><a class="dropdown-item" href="#">Logout</a></li>
         </ul>
       </div>
     </mat-toolbar>
-    <ng-content></ng-content>
+    <!-- <app-user-edit-pannel></app-user-edit-pannel> -->
+    <!-- <app-dashboard-container></app-dashboard-container> -->
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

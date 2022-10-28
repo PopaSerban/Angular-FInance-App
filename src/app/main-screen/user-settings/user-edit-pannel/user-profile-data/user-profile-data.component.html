@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="container" style="position: relative;">
+        <form [formGroup]="userDataProfileForm" (ngSubmit)="OnSubmit()">
+            <div class="form-group">
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                </div>
+                <input type="firstname" class="form-control" formControlName="Firstname" id="typeFirstname" placeholder="Firstname">
+              </div>
+              <br>
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="bi bi-person-dash-fill"></i></span>
+                </div>
+                <input type="surname" class="form-control" formControlName="Surname" id="typeSurname" placeholder="Surname">
+              </div>
+              <br>
+              <!-- dsdas -->
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                </div>
+                <input type="email" class="form-control" formControlName="Email" id="typeEmail"  placeholder="Email">
+              </div>
+              <br>
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="bi bi-house-fill"></i></span>
+                </div>
+                <input type="adress" class="form-control"  formControlName="Adress" id="exampleInputAdress" placeholder="Apartment, studio, or floor">
+              </div>
+              <br>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="bi bi-signpost-2-fill"></i></span>
+                    </div>
+                    <input type="text" class="form-control" formControlName="City" id="inputCity" placeholder="City">
+                  </div>
+                  <br>
+                </div>
+                <div class="form-group col-md-4">
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="bi bi-signpost-split-fill"></i></span>
+                    </div>
+                    <select id="inputState" class="form-control" formControlName="State" placeholder="State">
+                      <option selected> State...</option>
+                      <option>Romania</option>
+                      <option>Moldova</option>
+                    </select>
+                  </div>
+                  <br>
+                </div>
+                
+                <div class="form-group col-md-2">
+                  <input type="text" class="form-control" formControlName="Zip" id="inputZip" placeholder="Zip Code">
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="bi bi-telephone-fill"></i></span>
+                  </div>
+                  <select class="custom-select" formControlName="CountryCode" (click)="OnCountryCodeClick()" (change)="ChangePhoneCode($event)">
+                    <option value="State" selected="selected">State</option>
+                    <option *ngFor="let country of countryCodesList" [value]="country.dial_code">{{ !shouldShowStateCode ? country.name : showStateCode }}</option>
+                  </select>
+                  <input name="" class="form-control" formControlName="Number"  placeholder="Phone number" id="phoneNumber1" type="text">
+                </div>
+              </div>
+              <br>
+              <div class="row" *ngIf="!changingPassword">
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                  </div>
+                  <input type="password"  style="max-width: 7rem;"class="form-control" formControlName="Password" placeholder="Password" [readonly]="!changingPassword">
+                  <button type="button" class="btn btn-primary" (click)="OnChangePassword()">Change</button>
+                </div>
+              </div>
+              <div class="row" *ngIf="changingPassword">
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                  </div>
+                  <input type="password" class="form-control" formControlName="Password" placeholder="Password" [readonly]="!changingPassword">
+                  <button type="button" class="btn btn-primary" (click)="OnChangePassword()">Save</button>
+                </div>
+              </div>
+              <div class="text-center" *ngIf="changingPassword">
+                <app-password-strength [passwordToCheck]="userDataProfileForm.controls['Password'].value"
+                (passwordStrength)="passwordValid($event)"></app-password-strength>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+<div>
+ 

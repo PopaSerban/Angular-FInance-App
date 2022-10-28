@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "budget-app-77595": {
+      "hosting": {
+        "Angular-Budget-App": [
+          "budget-app-77595"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "budget-app-77595"
+  }
+}

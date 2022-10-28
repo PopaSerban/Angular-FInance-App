@@ -1,0 +1,16 @@
+#formItem label {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    font-size: .85em;
+}
+
+.custom-select{
+    max-height: 50px;
+    max-width: 80px;
+    min-width: 65px;
+    overflow-y: scroll;
+}
+input:read-only {
+    background-color: #EBEBE4;
+}

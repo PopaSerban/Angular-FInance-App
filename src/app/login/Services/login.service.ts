@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http"
-import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
 import { catchError, throwError } from "rxjs";
+
 
 export interface AuthenticationResponseData{
     idToken: string,
@@ -15,7 +15,7 @@ export interface AuthenticationResponseData{
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService{
-    constructor(private httpRequest: HttpClient,private router: Router){}
+    constructor(private httpRequest: HttpClient){}
 
 
     SignUpUser(userSetEmail: string, userSetPassword: string){
@@ -55,7 +55,7 @@ export class AuthenticationService{
                     errorMessage = new Error('This email exists already.');
                     break;
                 case'INVALID_PASSWORD':
-                    errorMessage = new Error('The password is invalid.');
+                    errorMessage = new Error('The username or password is invalid.');
                     break;
 
             }

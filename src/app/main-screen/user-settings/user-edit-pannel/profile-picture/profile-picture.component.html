@@ -1,13 +1,14 @@
 <div class="container">
+    <br>
     <div class="picture-container">
         <div class="picture">
             <img [src]="profilePictureUrl" class="picture-src" id="wizardPicturePreview" title="">
             <input type="file" id="avatar" class="" (change)="OnFileSelected($event)">
         </div>
          <h6 class="">{{!loading ? 'Choose Picture':'Uploading'}}</h6>
-         <div class="container">
-             <mat-progress-bar *ngIf="loading" mode="determinate" [value]="loadingPercentage" class="loadingBar"></mat-progress-bar>
+         <div class="container" *ngIf="loading">
+             <mat-progress-bar mode="determinate" [value]="loadingPercentage" class="loadingBar"></mat-progress-bar>
+             <br>
          </div>
-
     </div>
 </div>
