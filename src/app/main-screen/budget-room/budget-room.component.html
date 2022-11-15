@@ -1,0 +1,63 @@
+
+  <div class="container">
+    <div *ngFor="let roomItem of RoomsList" class="row justify-content-md-center" style="padding: 15px;">
+        <div class="card-wrapper" >
+            <mat-card class="example-card mat-elevation-z8">
+              <mat-card-header>
+                <mat-card-title>{{roomItem.roomName}}</mat-card-title>
+                <mat-card-subtitle>{{roomItem.description}}</mat-card-subtitle>
+              </mat-card-header>
+                  <div class="container flex-row">
+                      <div class="row justify-content-md-center" style="align-items: center;">
+                          <h1 style="align-items: center;"><i *ngFor="let users of roomItem.usersNames" class="bi bi-person-fill"></i></h1>
+                      </div>
+                  </div>
+              <mat-card-content>
+                <div *ngIf="roomItem.usersNumber<4">
+                    <div class="flex-row">
+                        <div *ngFor="let name of roomItem.usersNames let indexName=index " [ngClass]="indexName%2==0 ? 'User1': 'User2'">
+                          <div mat-card-avatar class="header-image-user"></div>
+                          <span>{{name}}</span>
+                        </div>        
+                  </div>
+                </div>
+                <div *ngIf="roomItem.usersNumber==4">
+                    <div class="flex-row">
+                        <div class="User1">
+                            <div mat-card-avatar class="header-image-user"></div>
+                            <span>{{roomItem.usersNames[0]}}</span>
+                          </div>
+                        <div class="User2">
+                            <div mat-card-avatar class="header-image-user"></div>
+                          <span>{{roomItem.usersNames[1]}}</span>
+                        </div>
+                  </div>
+                  <div class="flex-row">
+                    <div class="User2">
+                        <div mat-card-avatar class="header-image-user"></div>
+                        <span>{{roomItem.usersNames[2]}}</span>
+                      </div>
+                    <div class="User1">
+                        <div mat-card-avatar class="header-image-user"></div>
+                      <span>{{roomItem.usersNames[3]}}</span>
+                    </div>
+                </div>
+          </div>
+              </mat-card-content>
+          
+              <mat-card-actions>
+                <button mat-raised-button color="accent">ACCESS</button>
+                <button mat-raised-button color="primary">DELETE</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+    </div>
+    
+</div>
+<div
+  infinite-scroll
+  [infiniteScrollDistance]="distance"
+  [infiniteScrollThrottle]="throttle"
+  (scrolled)="OnScroll()"
+>   
+</div>

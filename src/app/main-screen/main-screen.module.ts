@@ -15,7 +15,9 @@ import { PasswordStrengthComponent } from './password-strength/password-strength
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DashboardContainerComponent } from './dashboard-container/dashboard-container.component';
-
+import { BudgetRoomComponent } from './budget-room/budget-room.component';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import { MatCardModule} from '@angular/material/card'
 
 @NgModule({
   declarations: [
@@ -24,19 +26,21 @@ import { DashboardContainerComponent } from './dashboard-container/dashboard-con
     ProfilePictureComponent,
     UserProfileDataComponent,
     PasswordStrengthComponent,
-    DashboardContainerComponent
+    DashboardContainerComponent,
+    BudgetRoomComponent
   ],
   imports: [
     CommonModule,
     MainScreenRoutingModule,
+    MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
     ReactiveFormsModule,
     MatProgressBarModule,
-    MatButtonModule
-
+    MatButtonModule,
+    InfiniteScrollModule,
   ],
 })
 export class MainScreenModule { }

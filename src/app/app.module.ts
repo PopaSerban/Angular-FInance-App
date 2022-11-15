@@ -15,19 +15,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { UserEditPannelComponent } from './main-screen/user-settings/user-edit-pannel/user-edit-pannel.component';
-import { ProfilePictureComponent } from './main-screen/user-settings/user-edit-pannel/profile-picture/profile-picture.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { UserProfileDataComponent } from './main-screen/user-settings/user-edit-pannel/user-profile-data/user-profile-data.component';
-import { PasswordStrengthComponent } from './main-screen/password-strength/password-strength.component';
 import { LoginModule } from './login/login.module';
 import { MainScreenModule } from './main-screen/main-screen.module';
-
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -59,7 +55,7 @@ import { MainScreenModule } from './main-screen/main-screen.module';
         provideFirestore(() => getFirestore()),
         provideStorage(() => getStorage()),
     ],
-    providers: [],
+    providers: [CookieService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

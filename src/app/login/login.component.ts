@@ -71,12 +71,11 @@ export class LoginComponent implements OnInit {
       authenticationObservable.subscribe(responseData=>{
         console.log(responseData);
         if(this.isSignUp){
-          this.userDataService.LoggedUserDataPartial({Id: this.firebaseDatabase.GetUserID(email), Email:email});
+          this.userDataService.LoggedUserDataPartial({id: this.firebaseDatabase.GetUserID(email), email:email});
 
           this.userDataService.GetLoggedUserData.subscribe(userData=>{
             this.firebaseDatabase.RegisterUser(userData);
           })
-          //this.firebaseDatabase.RegisterUser(this.userDataService.GetLoggedUserData);
         }else{
           const id = this.firebaseDatabase.GetUserID(email)
           this.firebaseDatabase.GetUserData(id).subscribe((response: UserInformation)=>{

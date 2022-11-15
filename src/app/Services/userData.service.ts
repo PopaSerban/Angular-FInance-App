@@ -10,11 +10,14 @@ import { FireBaseDatabaseService } from "./firebase-database.service";
     public _loggedUserData: UserInformation = new UserInformation;
     public userDataChanged = new Subject<UserInformation>();
 
-        constructor(private firebaseDatabaseService: FireBaseDatabaseService){
+        constructor(
+          private firebaseDatabaseService: FireBaseDatabaseService){
 
         }
 
       get GetLoggedUserData(): Observable<UserInformation>{
+        console.log('getting localuserdata');
+        console.log(this._loggedUserData);
         const loggedUserData = of(this._loggedUserData);
         return loggedUserData;
       }

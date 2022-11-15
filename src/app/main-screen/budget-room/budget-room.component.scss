@@ -1,0 +1,64 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+  
+    > div {
+      flex: 500%;
+      border-radius: 10px;
+      padding: 10px;
+    }
+    > .User2 {
+        background: rgba(0,0,0,0.1);
+        color: black;
+        display: flex;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+      }
+    
+    > .User1 {
+        background: lightblue;
+        color: black;
+        display: flex;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+     }
+  }
+ 
+
+mat-card::ng-deep.mat-card-header-text {
+    width: 100%;
+    text-align: center;
+  }
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  .mat-card-avatar.header-image-user {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+    width: 80px;
+    height: 80px;
+  }
+.mat-card-avatar {
+    width: 50px;
+    height: 50px;
+  }
+.mat-card-actions {
+    margin-left: 5rem;
+}
+.mat-card {
+    border-radius: 15px 50px 30px;
+  }
+h1 {
+    display: flex;
+    justify-content: center;    
+}
+
