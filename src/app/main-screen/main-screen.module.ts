@@ -18,6 +18,7 @@ import { DashboardContainerComponent } from './dashboard-container/dashboard-con
 import { BudgetRoomComponent } from './budget-room/budget-room.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { MatCardModule} from '@angular/material/card'
+import { FinancialStatisticsModule } from '../financial-statistics/financial-statistics.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatCardModule} from '@angular/material/card'
     MatProgressBarModule,
     MatButtonModule,
     InfiniteScrollModule,
+    FinancialStatisticsModule
   ],
 })
 export class MainScreenModule { }
