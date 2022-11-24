@@ -6,19 +6,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { FinancialStatisticsComponent } from './financial-statistics/financial-statistics.component';
 import { SpendingCatTableComponent } from './spending-cat-table/spending-cat-table.component' 
+import { SpendingCardsComponent } from './spending-cards/spending-cards.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 @NgModule({
   declarations: [
     PieChartComponent,
     FinancialStatisticsComponent,
-    SpendingCatTableComponent
+    SpendingCatTableComponent,
+    SpendingCardsComponent
+
   ],
   imports: [
     CommonModule,
     NgxChartsModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    NgxChartsModule,
+    MatTabsModule,
+    MatToolbarModule
     
   ]
 })

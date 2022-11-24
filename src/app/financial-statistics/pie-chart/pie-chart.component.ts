@@ -11,12 +11,12 @@ export class PieChartComponent implements OnInit {
   view = [700, 400];
 
   // options
+  public legendPosition: LegendPosition = LegendPosition.Below;
   gradient: boolean = true;
   showLegend: boolean = false;
   showLabels: boolean = true;
   isDoughnut: boolean = true;
-  public legendPosition: LegendPosition = LegendPosition.Below;
-  colorScheme: string = 'cool';
+  colorScheme: string = 'vivid';
 
 
   ngOnInit(): void {

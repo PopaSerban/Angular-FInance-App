@@ -1,14 +1,6 @@
-table {
-    //display:flex;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    margin-left: 20px;
-    margin-right: 10px;
-    margin-bottom: 20px;
-  }
 
   ngx-charts-pie-chart{
       display: flex;
       padding: 1px;
+      max-height: fit-content;
   }

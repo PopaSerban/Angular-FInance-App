@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-financial-statistics',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./financial-statistics.component.scss']
 })
 export class FinancialStatisticsComponent implements OnInit {
-
+  tabNumber: number = 0;
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  OnSelectedTab($event:any){
+    console.log($event.index);
+    this.tabNumber = $event.index
+  }
+  OnSwipe(evt:any){
+    console.log('Cakked')
+    console.log(evt);
+    const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? 1 : -1):0;
+    this.tabNumber = this.tabNumber+x;
+
   }
 
 }

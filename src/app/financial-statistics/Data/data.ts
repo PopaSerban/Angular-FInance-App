@@ -1,30 +1,30 @@
 export var single = [
     {
       "name": "Grocceries",
-      "value": 8940000
+      "value": 8940
     },
     {
       "name": "Car",
-      "value": 5000000
+      "value": 5000
     },
     {
       "name": "Rent",
-      "value": 7200000
+      "value": 7250
     },
       {
       "name": "TV&Internet",
-      "value": 6200000
+      "value": 620
     },
     {
         "name": "Games",
-        "value": 6200000
+        "value": 1250
       },
       {
         "name": "Footbal",
-        "value": 6200000
+        "value": 600
       },
       {
         "name": "Wife",
-        "value": 6200000
+        "value": 4500
       }
   ];

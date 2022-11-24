@@ -1,2 +1,16 @@
-<app-pie-chart></app-pie-chart>
-<app-spending-cat-table></app-spending-cat-table>
+<div *ngIf="tabNumber == 0" class="container">
+    <app-pie-chart></app-pie-chart>
+    <app-spending-cards></app-spending-cards>
+    <app-spending-cat-table></app-spending-cat-table>
+    <br><br>
+</div>
+<div *ngIf="tabNumber == 1" >
+    Partea 2
+</div>
+<!-- <div class="sliderNavigator">
+</div> -->
+<mat-tab-group class="sliderNavigator" (selectedTabChange)="OnSelectedTab($event)">
+        <mat-tab label="First"></mat-tab>
+        <mat-tab label="Second"></mat-tab>
+        <mat-tab label="Third"></mat-tab>
+  </mat-tab-group>
