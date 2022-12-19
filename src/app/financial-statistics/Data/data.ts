@@ -5,7 +5,12 @@ export var single = [
     },
     {
       "name": "Car",
-      "value": 5000
+      "value": 5000,
+      "extra":[
+        {"name":5000,
+          "value":'Salam'
+      }
+      ]
     },
     {
       "name": "Rent",

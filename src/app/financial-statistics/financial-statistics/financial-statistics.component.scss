@@ -10,25 +10,29 @@
  }
 
 mat-ink-bar{
-    left: 15px;
-    max-width: 50px;
+   display: none;
+
 }
 .mat-tab-labels{
-    border-radius: 5rem;
+    border-radius: 1rem;
+    color: red;
 }
 
+
+
  .sliderNavigator{
-     background-color: rgb(97, 188, 241);
-     opacity: 90%;
+    background-color: rgb(97, 188, 241);
+     opacity: 95%;
      border-radius: 5rem;
      align-items: center;
-     margin-left: 60px;
+     margin-left: 80px;
      margin-right: 60px;
-     bottom: 15px;
+     bottom: 10px;
      position: fixed;
 
  }
+
  .container{
      display: flexbox;
-     bottom: 25px;
+    //  bottom: 25px;
  }

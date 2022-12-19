@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {MatTabsModule} from '@angular/material/tabs';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-financial-statistics',
   templateUrl: './financial-statistics.component.html',
-  styleUrls: ['./financial-statistics.component.scss']
+  styleUrls: ['./financial-statistics.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FinancialStatisticsComponent implements OnInit {
   tabNumber: number = 0;

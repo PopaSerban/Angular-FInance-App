@@ -5,12 +5,22 @@
     <br><br>
 </div>
 <div *ngIf="tabNumber == 1" >
-    Partea 2
+    <div class="container">
+        <app-spending-graph></app-spending-graph>
+    </div>
+    <div class="container">
+        <app-spending-form></app-spending-form>
+        <app-spendings-record-table></app-spendings-record-table>
+    </div>
 </div>
-<!-- <div class="sliderNavigator">
-</div> -->
 <mat-tab-group class="sliderNavigator" (selectedTabChange)="OnSelectedTab($event)">
-        <mat-tab label="First"></mat-tab>
-        <mat-tab label="Second"></mat-tab>
-        <mat-tab label="Third"></mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label><mat-icon>data_usage</mat-icon></ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label><mat-icon>assignment</mat-icon></ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label><mat-icon>calendar_today</mat-icon></ng-template>
+    </mat-tab>
   </mat-tab-group>

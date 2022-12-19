@@ -24,6 +24,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { LoginModule } from './login/login.module';
 import { MainScreenModule } from './main-screen/main-screen.module';
 import { CookieService } from 'ngx-cookie-service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { CookieService } from 'ngx-cookie-service';
         provideDatabase(() => getDatabase()),
         provideFirestore(() => getFirestore()),
         provideStorage(() => getStorage()),
+        NgbModule,
     ],
     providers: [CookieService],
     bootstrap: [AppComponent]

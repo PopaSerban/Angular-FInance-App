@@ -1,0 +1,25 @@
+<h1 style="justify-content: center;">Spent this month</h1>
+<div class="row justify-content-md-center" style="padding: 0.1px;">
+  <div class="card-wrapper" >
+    <ngx-charts-line-chart style="padding-right: 20px;"
+      [view]="view"
+      [scheme]="colorScheme"
+      [legend]="legend"
+      [legendPosition]="legendPosition"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [roundDomains]="true"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="timeline"
+      [results]="dataLineChart"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)"
+      [autoScale]="false"
+      >
+    </ngx-charts-line-chart>
+
+    </div>

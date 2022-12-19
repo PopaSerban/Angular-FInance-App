@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {single} from '../Data/data'
+import {single} from '../../Data/data'
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 
 @Component({

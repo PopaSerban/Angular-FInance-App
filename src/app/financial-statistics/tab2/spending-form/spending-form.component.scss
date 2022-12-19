@@ -1,0 +1,19 @@
+.titleFormSpending{
+    width: 50%;
+    display: grid;
+    place-items: center;
+    border-radius: 3rem;
+}
+.titleText{
+    display: grid;
+    place-items: center;
+    text-align: left;
+}
+.spendingForm{
+    border-radius: 3rem 6rem 3rem 6rem;
+    background-color: rgb(136, 221, 255);
+    margin: 5px;
+}
+.submit{
+    padding-bottom: 10px;
+}

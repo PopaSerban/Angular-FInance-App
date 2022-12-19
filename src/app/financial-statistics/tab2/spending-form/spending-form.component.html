@@ -1,0 +1,56 @@
+
+<br>
+<div class="row">
+    <div class="col-3">
+        <input type="text" [(ngModel)]="newCategory">
+    </div>
+    <div class="col-3">
+        <button type="submit" class="btn btn-info" (click)="OnAddCategory()">Create</button>
+    </div>
+</div>
+<div class="spendingForm">
+    <div class="titleFormSpending" >
+        <div class="titleText">
+            <div style="min-height: 12px;"></div>
+            <h3>Add Spendings </h3>
+        </div>
+    </div>
+    <div class="container">
+        <form [formGroup]="ExpensesForm" (ngSubmit)="OnExpenseSubmited()">
+            <div class="row">
+              <div class="col-3">
+                <label for="amountInput">Amount</label>
+                <input formControlName="typeAmountX" type="number" class="form-control" id="amountInput" placeholder="Enter amount">
+              </div>
+              <div class="col-4">
+                <label for="categorySelect">Category</label>
+                <select formControlName="typeCategoryX" class="form-control" id="categorySelect">
+                  <option *ngFor="let category of categories">{{category}}</option>
+                </select>
+              </div>
+              <div class="col-5">
+                <label  for="categorySelect">Select Date</label>
+                  <div class="input-group">
+                    <input
+                        formControlName="typeDateX"
+                        class="form-control"
+                        placeholder="yyyy-mm-dd"
+                        name="dp"
+                        [(ngModel)]="model"
+                        ngbDatepicker
+                        #d="ngbDatepicker"
+                    />
+                    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+                </div>
+            </div>
+            </div>
+            <div class="form-group mt-3">
+              <label for="notesTextarea">Notes</label>
+              <textarea formControlName="typeNotesX" class="form-control" id="notesTextarea" rows="3"></textarea>
+            </div>
+            <div class="d-flex justify-content-center align-items-center mt-3 submit">
+              <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

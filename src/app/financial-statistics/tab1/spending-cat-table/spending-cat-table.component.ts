@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ISpendings } from '../IData.model';
-import { single } from '../Data/data';
+import { ISpendings } from '../../IData.model';
+import { single } from '../../Data/data';
 
 @Component({
   selector: 'app-spending-cat-table',

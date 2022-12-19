@@ -1,0 +1,26 @@
+<div class="tableContainer">
+    <div class="form-outline w-50" style="padding-left: 5%;">
+        <input [(ngModel)]="searchInput" class="form-control" type="text" placeholder="Search record..">
+    </div>
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Amounth</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let spendings of spendingList | search:searchInput">
+                    <td>{{spendings.category}}</td>
+                    <td>{{spendings.date}}</td>
+                    <td>{{spendings.price}}</td>
+                    <td>{{spendings.notes}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<p>something</p>

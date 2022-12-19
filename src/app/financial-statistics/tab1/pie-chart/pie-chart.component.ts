@@ -1,4 +1,4 @@
-import { single } from '../Data/data';
+import { single } from '../../Data/data';
 import { Component, OnInit } from '@angular/core';
 import { LegendPosition } from '@swimlane/ngx-charts';
 @Component({
@@ -20,6 +20,7 @@ export class PieChartComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log('called init')
   }
   constructor() {
     Object.assign(this, { single });
