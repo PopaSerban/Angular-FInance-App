@@ -9,6 +9,7 @@ import { Spending } from '../ISpending.model';
   styleUrls: ['./spendings-record-table.component.scss']
 })
 export class SpendingsRecordTableComponent implements OnInit, OnDestroy {
+
   searchInput: String = '';
   spendingServiceSubscription : Subscription = new Subscription();
   data = [
@@ -29,7 +30,7 @@ export class SpendingsRecordTableComponent implements OnInit, OnDestroy {
         this.spendingList=spendings;
       });
       this.spendingList = this.spendingServie.GetSpendingList();
-      for (let index = 0; index < 3; index++) {
+      for (let index = 0; index < 7; index++) {
         this.spendingList.push(new Spending(12,'bills','12.12.2022','some notes')); 
       }
       this.spendingServie.SetSpendingList(this.spendingList);
@@ -38,5 +39,5 @@ export class SpendingsRecordTableComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.spendingServiceSubscription.unsubscribe();
   }
-
+  
 }

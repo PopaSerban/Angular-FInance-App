@@ -1,13 +1,5 @@
 
 <br>
-<div class="row">
-    <div class="col-3">
-        <input type="text" [(ngModel)]="newCategory">
-    </div>
-    <div class="col-3">
-        <button type="submit" class="btn btn-info" (click)="OnAddCategory()">Create</button>
-    </div>
-</div>
 <div class="spendingForm">
     <div class="titleFormSpending" >
         <div class="titleText">
@@ -20,13 +12,25 @@
             <div class="row">
               <div class="col-3">
                 <label for="amountInput">Amount</label>
-                <input formControlName="typeAmountX" type="number" class="form-control" id="amountInput" placeholder="Enter amount">
+                  <input formControlName="typeAmountX" type="number" class="form-control" id="amountInput" placeholder="0.00$">
               </div>
               <div class="col-4">
                 <label for="categorySelect">Category</label>
-                <select formControlName="typeCategoryX" class="form-control" id="categorySelect">
-                  <option *ngFor="let category of categories">{{category}}</option>
-                </select>
+                <div class="row">
+                  <div class="d-flex flex-row">
+                    <div class="col-9">
+                      <select formControlName="typeCategoryX" class="form-control" id="categorySelect" style="padding-right: 5px;">
+                        <option *ngFor="let category of categories">{{category}}</option>
+                      </select>
+                    </div>
+                    <div class="col-3 centerButton" style="padding-left: 3px;">
+                      <button type="button" class="btn btn-success btn-circle btn-sm" (click)="OnEnableCategory()"
+                        style="border-radius: 15rem;">
+                        <i [ngClass]="{'bi bi-plus-lg': !isAddCategoryOpened, 'bi bi-dash-lg': isAddCategoryOpened}"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="col-5">
                 <label  for="categorySelect">Select Date</label>
@@ -34,7 +38,7 @@
                     <input
                         formControlName="typeDateX"
                         class="form-control"
-                        placeholder="yyyy-mm-dd"
+                        placeholder="date.."
                         name="dp"
                         [(ngModel)]="model"
                         ngbDatepicker
@@ -43,6 +47,19 @@
                     <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
                 </div>
             </div>
+            <!-- dsda -->
+            <div *ngIf="isAddCategoryOpened" class="col-9" style="padding-top: 10px;">
+              <label for="amountInput">Add Category</label>
+              <div class="d-flex flex-row centerButton">
+                <div class="col-9">
+                  <input class="form-control" type="text" [ngModelOptions]="{standalone: true}"[(ngModel)]="newCategory"  placeholder="ex. Gifts..">
+                </div>
+                <div class="col-3">
+                  <button type="submit" class="btn btn-info" (click)="OnAddCategory()">Add</button>
+                 </div>
+              </div>
+            </div>
+            <!-- dsds -->
             </div>
             <div class="form-group mt-3">
               <label for="notesTextarea">Notes</label>

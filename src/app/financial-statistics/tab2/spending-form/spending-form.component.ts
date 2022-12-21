@@ -9,11 +9,12 @@ import { SpendingsService } from '../../Services/spendings.service';
   styleUrls: ['./spending-form.component.scss']
 })
 export class SpendingFormComponent implements OnInit {
+  isAddCategoryOpened: boolean = false;
   isCalendarOpened: boolean = false;
   selectedDate = Date.now();
   ExpensesForm: FormGroup = new FormGroup({});
   categories: string[] = ['None','food','bills','coffee','car','beer'];
-  model: NgbDateStruct = new NgbDate(2020,10,10);
+  model: NgbDateStruct = new NgbDate(new Date().getFullYear(),new Date().getMonth()+1,new Date().getDate());
   newCategory: string = '';
 
   constructor( private readonly spendingService:SpendingsService) { }
@@ -30,15 +31,15 @@ export class SpendingFormComponent implements OnInit {
       'typeNotesX': new FormControl(null)
     })
   }
-  OnExpenseSubmited(){
-    console.log(this.ExpensesForm.controls);
-    this.spendingService.AddSpending(
-      this.spendingService.CreateSpendingObject(
-        this.ExpensesForm.controls['typeAmountX'].value,
-        this.ExpensesForm.controls['typeCategoryX'].value,
-        this.ExpensesForm.controls['typeDateX'].value,
-        this.ExpensesForm.controls['typeNotesX'].value
-      ));
+  OnExpenseSubmited(){ 
+      const amount = this.ExpensesForm.controls['typeAmountX'].value
+      const category = this.ExpensesForm.controls['typeCategoryX'].value
+      const date = this.ExpensesForm.controls['typeDateX'].value
+      const notes = this.ExpensesForm.controls['typeNotesX'].value
+  
+      this.ExpensesForm.controls['typeDateX'].value? this.SendSpendingToService(amount, category, date, notes) : this.SendSpendingToService(amount,category,
+      new NgbDate(new Date().getFullYear(),new Date().getMonth()+1,new Date().getDate()),notes);
+
     this.ExpensesForm.reset();
   }
 
@@ -46,12 +47,21 @@ export class SpendingFormComponent implements OnInit {
     this.isCalendarOpened = !this.isCalendarOpened;
   }
 
+  OnEnableCategory(){
+    this.isAddCategoryOpened= !this.isAddCategoryOpened;
+  }
+
   OnAddCategory(){
     console.log(this.newCategory);
     if(this.newCategory){
-      this.categories.push(this.newCategory);
+      this.categories.unshift(this.newCategory);
       this.newCategory  = '';
+      this.isAddCategoryOpened= !this.isAddCategoryOpened;
     }
+  }
+  private SendSpendingToService(amount:number, category:string, date:NgbDate, notes:string){
+    this.spendingService.AddSpending(
+      this.spendingService.CreateSpendingObject(amount, category, date, notes));
   }
 
 }

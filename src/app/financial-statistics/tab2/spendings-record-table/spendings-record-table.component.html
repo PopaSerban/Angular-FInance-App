@@ -17,12 +17,12 @@
                   </div>
                   <div class="flex-grow-1">
                     <div class="d-flex justify-content-between">
-                      <div class="text-muted"><i class="bi bi-wallet2"></i> {{item.price}}</div>
+                      <div class="text-muted"><i class="bi bi-wallet2"></i> {{item.price}}$</div>
                       <div class="text-muted">{{item.date}} <i class="bi bi-calendar-check"></i></div>
                     </div>
                     <div class="d-flex justify-content-between">
                       <div class="text-muted"><i class="bi bi-tag"></i> {{item.category}}</div>
-                      <div class="text-muted">{{item.notes}} <i class="bi bi-card-text"></i></div>
+                      <div class="text-muted">{{item.notes?.length>10 ? item.notes.substring(0,10)+'...': item.notes }} <i class="bi bi-card-text"></i></div>
                     </div>
                   </div>
                   <div class="ml-3">
@@ -36,6 +36,8 @@
               </div>
     </div>
     <div class="card-footer pb-0 pt-3">
-        <!-- <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination> -->
+        
     </div>
 </div>
+
+<h3>Example</h3>

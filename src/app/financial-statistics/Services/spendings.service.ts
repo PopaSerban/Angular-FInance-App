@@ -13,7 +13,7 @@ export class SpendingsService{
 
 
     AddSpending(spending: Spending){
-        this.SpendingList.push(spending);
+        this.SpendingList.unshift(spending);
         console.log(this.SpendingList);
         this.spendingListChanged.next(this.SpendingList.slice());
     }

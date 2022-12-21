@@ -10,10 +10,14 @@
     text-align: left;
 }
 .spendingForm{
-    border-radius: 3rem 6rem 3rem 6rem;
+    border-radius: 3rem 3rem 3rem 3rem;
     background-color: rgb(136, 221, 255);
     margin: 5px;
 }
 .submit{
     padding-bottom: 10px;
+}
+.centerButton{
+    display: grid;
+    place-items: center;
 }
