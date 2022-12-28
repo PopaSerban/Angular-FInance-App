@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Firestore } from '@angular/fire/firestore';
 import { CookiesService } from 'src/app/Services/Cookies/cookies.service';
 import { iTransaction } from '../Models/ITransaction.model';
   
@@ -11,9 +10,7 @@ import { iTransaction } from '../Models/ITransaction.model';
 export class FireBaseUserTransactionsService{
     private UserId: string = '';
 
-    constructor(private readonly firestore: Firestore,private readonly cookieService: CookiesService,
-        private firestoreService:AngularFirestore) {
-
+    constructor(private readonly cookieService: CookiesService,private firestoreService:AngularFirestore) {
         this.UserId = this.cookieService.GetCookieData('id');
         this.CreateUserHistory(this.UserId)
       }
@@ -47,20 +44,26 @@ export class FireBaseUserTransactionsService{
 
     async CreateUserHistory(userId: string) {
         console.log('starting update');
-        let userExists;
-        let historyExists;
-        this.firestoreService.collection('Transactions').doc(userId)
+        let userExists= false;
+        let historyExists = false;
+        await this.firestoreService.collection('Transactions').doc(userId)
         .get().subscribe(document=>{
             userExists = document.exists;
         });
         if(!userExists){
             await this.firestoreService.collection('Transactions').doc(userId).set({});
         }
-        this.firestoreService.collection('Transactions').doc(userId).collection('History').
+        await this.firestoreService.collection('Transactions').doc(userId).collection('History').doc('*').
         get().subscribe(historyDoc=>{
-            historyExists = historyDoc.empty
+            historyExists = historyDoc.exists;
         });
+        await this.firestoreService.collection('Transactions').doc(userId).collection('History').ref
+        .get().then(querySnapshot => {
+            historyExists = !querySnapshot.empty;
+          });
+
         if(!historyExists){
+            console.log('called');
             await this.firestoreService.collection('Transactions').doc(userId).collection('History').add({});
     }
 
