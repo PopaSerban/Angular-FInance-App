@@ -53,10 +53,6 @@ export class FireBaseUserTransactionsService{
         if(!userExists){
             await this.firestoreService.collection('Transactions').doc(userId).set({});
         }
-        await this.firestoreService.collection('Transactions').doc(userId).collection('History').doc('*').
-        get().subscribe(historyDoc=>{
-            historyExists = historyDoc.exists;
-        });
         await this.firestoreService.collection('Transactions').doc(userId).collection('History').ref
         .get().then(querySnapshot => {
             historyExists = !querySnapshot.empty;
