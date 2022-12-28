@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
+import { iTransaction } from '../Models/ITransaction.model';
 import { Spending } from '../tab2/ISpending.model';
+import { FireBaseUserTransactionsService } from './firebase-transactions.service';
 
 
 @Injectable({
@@ -11,10 +13,19 @@ export class SpendingsService{
     spendingListChanged = new Subject<Spending[]>();
     private SpendingList: Spending[] = [];
 
+    constructor(private readonly firebaseTransactionService:FireBaseUserTransactionsService){
+        this.InitialiseUserTransactions();
+    }
+
+    async InitialiseUserTransactions(){
+        this.SpendingList = await this.firebaseTransactionService.getAll();
+        this.spendingListChanged.next(this.SpendingList.slice());
+
+    }
 
     AddSpending(spending: Spending){
+        this.firebaseTransactionService.CreateTransaction(spending);
         this.SpendingList.unshift(spending);
-        console.log(this.SpendingList);
         this.spendingListChanged.next(this.SpendingList.slice());
     }
     GetSpendingList(){
@@ -29,4 +40,5 @@ export class SpendingsService{
          let formatedDate = `${date.day}.${date.month}.${date.year}`;
          return new Spending(amount, category, formatedDate,notes);
     }
+
 }

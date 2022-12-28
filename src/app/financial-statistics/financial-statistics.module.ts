@@ -18,6 +18,9 @@ import { SearchPipe } from './tab2/spendings-record-table/search.pipe';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { FirestoreModule } from '@angular/fire/firestore';
+import {AngularFireModule} from '@angular/fire/compat'
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     PieChartComponent,
@@ -43,7 +46,9 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    FirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
 
   ]
 })

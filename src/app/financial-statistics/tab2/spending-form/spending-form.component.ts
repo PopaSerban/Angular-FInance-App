@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { FireBaseUserTransactionsService } from '../../Services/firebase-transactions.service';
 import { SpendingsService } from '../../Services/spendings.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class SpendingFormComponent implements OnInit {
   model: NgbDateStruct = new NgbDate(new Date().getFullYear(),new Date().getMonth()+1,new Date().getDate());
   newCategory: string = '';
 
-  constructor( private readonly spendingService:SpendingsService) { }
+  constructor( private readonly spendingService:SpendingsService,
+    private readonly firebaseTransactionsService: FireBaseUserTransactionsService) { }
 
   ngOnInit(): void {
     this.InitForm();
@@ -41,6 +43,7 @@ export class SpendingFormComponent implements OnInit {
       new NgbDate(new Date().getFullYear(),new Date().getMonth()+1,new Date().getDate()),notes);
 
     this.ExpensesForm.reset();
+    this.firebaseTransactionsService.getAll();
   }
 
   showCalendar(){

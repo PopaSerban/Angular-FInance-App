@@ -10,6 +10,10 @@ import { Spending } from '../ISpending.model';
 })
 export class SpendingsRecordTableComponent implements OnInit, OnDestroy {
 
+  currentPage: number = 1;
+  itemsPerPage:number = 6;
+  isShowMoreIndex: number = -1;
+
   searchInput: String = '';
   spendingServiceSubscription : Subscription = new Subscription();
   data = [
@@ -30,14 +34,25 @@ export class SpendingsRecordTableComponent implements OnInit, OnDestroy {
         this.spendingList=spendings;
       });
       this.spendingList = this.spendingServie.GetSpendingList();
-      for (let index = 0; index < 7; index++) {
-        this.spendingList.push(new Spending(12,'bills','12.12.2022','some notes')); 
-      }
-      this.spendingServie.SetSpendingList(this.spendingList);
+  }
+
+  GetTotalPages() {
+    return Math.ceil(this.spendingList.length / this.itemsPerPage);
   }
 
   ngOnDestroy(){
     this.spendingServiceSubscription.unsubscribe();
+  }
+
+  PreviousPage(){
+    this.currentPage--;
+  }
+
+  NextPage(){
+    this.currentPage++;
+  }
+  ToggleMoreDetails(index: number){
+    this.isShowMoreIndex != index ? this.isShowMoreIndex=index: this.isShowMoreIndex=-1
   }
   
 }
