@@ -15,24 +15,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideStorage,getStorage } from '@angular/fire/storage';
 import { LoginModule } from './login/login.module';
 import { MainScreenModule } from './main-screen/main-screen.module';
 import { CookieService } from 'ngx-cookie-service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-
+import { PushNotificationComponent } from './Utils/push-notification/push-notification.component';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
     declarations: [
         AppComponent,
         DialogBoxComponent,
+        PushNotificationComponent,
 
     ],
     imports: [
@@ -52,14 +47,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         MatSidenavModule,
         MatIconModule,
         MatListModule,
-        provideFirebaseApp(() => initializeApp(environment.firebase)),
-        provideAuth(() => getAuth()),
-        provideDatabase(() => getDatabase()),
-        provideFirestore(() => getFirestore()),
-        provideStorage(() => getStorage()),
+        AngularFireModule.initializeApp(environment.firebase),
         NgbModule,
     ],
     providers: [CookieService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
+

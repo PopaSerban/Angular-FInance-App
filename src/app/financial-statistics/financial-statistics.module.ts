@@ -7,9 +7,9 @@ import { MatTableModule } from '@angular/material/table';
 import { FinancialStatisticsComponent } from './financial-statistics/financial-statistics.component';
 import { SpendingCatTableComponent } from './tab1/spending-cat-table/spending-cat-table.component' 
 import { SpendingCardsComponent } from './tab1/spending-cards/spending-cards.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
+import { MatTabsModule} from '@angular/material/tabs';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule} from '@angular/material/icon';
 import { SpendingFormComponent } from './tab2/spending-form/spending-form.component';
 import { SpendingGraphComponent } from './tab2/spending-graph/spending-graph.component';
 import { SpendingsRecordTableComponent } from './tab2/spendings-record-table/spendings-record-table.component'
@@ -19,8 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { FirestoreModule } from '@angular/fire/firestore';
-import {AngularFireModule} from '@angular/fire/compat'
-import { environment } from 'src/environments/environment';
+import { SpendingsPopUpComponent } from './spendings-pop-up/spendings-pop-up.component';
 @NgModule({
   declarations: [
     PieChartComponent,
@@ -30,7 +29,8 @@ import { environment } from 'src/environments/environment';
     SpendingFormComponent,
     SpendingGraphComponent,
     SpendingsRecordTableComponent,
-    SearchPipe
+    SearchPipe,
+    SpendingsPopUpComponent
 
   ],
   imports: [
@@ -48,7 +48,6 @@ import { environment } from 'src/environments/environment';
     MatSelectModule,
     NgbDatepickerModule,
     FirestoreModule,
-    AngularFireModule.initializeApp(environment.firebase),
 
   ]
 })

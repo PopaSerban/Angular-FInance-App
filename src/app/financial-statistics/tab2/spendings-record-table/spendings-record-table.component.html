@@ -8,13 +8,13 @@
       </div>
     <div class="card-body">
               <div *ngFor="let item of (searchInput.length==0 ? (spendingList| slice:((currentPage - 1) * itemsPerPage):(currentPage * itemsPerPage)| search:searchInput):(spendingList | search:searchInput)) index as i" class="alert alert-secondary" role="alert">
-                <div class="d-flex align-items-center" (click)="ToggleMoreDetails(i)">
+                <div class="d-flex align-items-center" >
                   <div class="mr-3">
                       <div class="container">
                           <div class="bg-success text-white rounded-circle" style="width: 20px; height: 20px;"></div>
                       </div>
                   </div>
-                  <div class="flex-grow-1">
+                  <div class="flex-grow-1"(click)="ToggleMoreDetails(i)">
                     <div class="d-flex justify-content-between">
                       <div class="text-muted"><i class="bi bi-wallet2"></i> {{item.amount}}$</div>
                       <div class="text-muted">{{item.date}} <i class="bi bi-calendar-check"></i></div>
@@ -26,7 +26,7 @@
                   </div>
                   <div class="ml-3">
                       <div class="container">
-                          <button class="btn btn-outline-secondary btn-sm" type="button">
+                          <button (click)="DeleteTransaction(item)" class="btn btn-outline-secondary btn-sm" type="button">
                               <i class="bi bi-trash"></i>
                           </button>
                       </div>

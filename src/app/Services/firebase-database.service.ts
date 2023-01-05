@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, tap } from "rxjs";
-import { User } from "../login/user.model";
 import { UserInformation } from "../shared/models/userInformation.model";
 import { CookiesService } from "./Cookies/cookies.service";
 

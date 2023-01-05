@@ -6,7 +6,6 @@ import { UserEditPannelComponent } from './user-settings/user-edit-pannel/user-e
 import { BudgetRoomComponent } from './budget-room/budget-room.component';
 import { FinancialStatisticsComponent } from '../financial-statistics/financial-statistics/financial-statistics.component';
 
-
 const routes: Routes = [
   { path: '', component: MainScreenComponent, children:[
     {path:'welcome', component: DashboardContainerComponent},

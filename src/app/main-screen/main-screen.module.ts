@@ -42,7 +42,7 @@ import { FinancialStatisticsModule } from '../financial-statistics/financial-sta
     MatProgressBarModule,
     MatButtonModule,
     InfiniteScrollModule,
-    FinancialStatisticsModule
+    FinancialStatisticsModule,
   ],
 })
 export class MainScreenModule { }

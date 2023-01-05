@@ -22,6 +22,7 @@ export class FireBaseUserTransactionsService{
             querySnapshot.forEach(doc => {
               const data = doc.data();
               transactions.push({
+                id: doc.id,
                 amount: data['amount'],
                 category: data['category'],
                 date: data['date'],
@@ -32,18 +33,18 @@ export class FireBaseUserTransactionsService{
         return transactions;
     }
 
-    CreateTransaction(transaction: iTransaction) {
-        console.log('start adding transaction');
-        this.firestoreService.collection('Transactions').doc(this.UserId).collection('History').add({
+    async CreateTransaction(transaction: iTransaction) {
+        const docID = await this.firestoreService.collection('Transactions').doc(this.UserId).collection('History').add({
             amount: transaction.amount,
             category:transaction.category,
             date: transaction.date,
             notes: transaction.notes
         });
+
+        return docID.id as string;
       }
 
     async CreateUserHistory(userId: string) {
-        console.log('starting update');
         let userExists= false;
         let historyExists = false;
         await this.firestoreService.collection('Transactions').doc(userId)
@@ -59,9 +60,13 @@ export class FireBaseUserTransactionsService{
           });
 
         if(!historyExists){
-            console.log('called');
             await this.firestoreService.collection('Transactions').doc(userId).collection('History').add({});
     }
 
   }
+
+  async DeleteTransaction(transactionID:string){
+    await this.firestoreService.collection('Transactions').doc(this.UserId).collection('History').doc(transactionID).delete();
+  }
+  
 }
