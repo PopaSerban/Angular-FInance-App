@@ -20,14 +20,12 @@ import { LoginModule } from './login/login.module';
 import { MainScreenModule } from './main-screen/main-screen.module';
 import { CookieService } from 'ngx-cookie-service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PushNotificationComponent } from './Utils/push-notification/push-notification.component';
 import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
     declarations: [
         AppComponent,
         DialogBoxComponent,
-        PushNotificationComponent,
 
     ],
     imports: [

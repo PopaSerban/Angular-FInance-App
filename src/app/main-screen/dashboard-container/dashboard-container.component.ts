@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-container.component.scss']
 })
 export class DashboardContainerComponent implements OnInit {
-  public welcomeText:string = 'Please update you"r personal information before continuing, by pressing the below button or by going to profile icon, edit tab'
+  public welcomeText:string = 'Please update your personal information before continuing, by pressing the below button or by going to profile icon, edit tab'
   constructor(private readonly router:Router) { }
 
   ngOnInit(): void {

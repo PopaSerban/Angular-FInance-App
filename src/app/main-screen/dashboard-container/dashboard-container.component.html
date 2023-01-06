@@ -1,12 +1,9 @@
 <div class="container align-items-center justify-content-center" id="welcome">
-    <div class="container">
-        <br>
-        <p class="text-center fs-1 fw-bolder">Welcome</p>
-        <br>
-        <p class="text-center fs-3 fw-bolder lh-base">{{welcomeText}}</p>
-        <br>
-        <p class="text-center">
-            <button type="button" class="btn btn-primary" (click)="OnSubmit()">Click Here</button>
-        </p>
+    <div class="card">
+      <div class="card-body text-center">
+        <h3 class="card-title fw-bolder">Welcome</h3>
+        <p class="card-text fs-4 lh-base">{{ welcomeText }}</p>
+        <button type="button" class="btn btn-primary btn-block" (click)="OnSubmit()">Continue</button>
+      </div>
     </div>
-</div>
+  </div>

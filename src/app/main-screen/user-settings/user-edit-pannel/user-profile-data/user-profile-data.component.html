@@ -47,9 +47,7 @@
                       <span class="input-group-text"><i class="bi bi-signpost-split-fill"></i></span>
                     </div>
                     <select id="inputState" class="form-control" formControlName="State" placeholder="State">
-                      <option selected> State...</option>
-                      <option>Romania</option>
-                      <option>Moldova</option>
+                      <option *ngFor="let state of stateCodesList"[value]="state.name">{{state.name}}</option>
                     </select>
                   </div>
                   <br>
@@ -96,7 +94,7 @@
                 (passwordStrength)="passwordValid($event)"></app-password-strength>
               </div>
               <br>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button [disabled]="userDataProfileForm.untouched|| userDataProfileForm.invalid" type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
     </div>

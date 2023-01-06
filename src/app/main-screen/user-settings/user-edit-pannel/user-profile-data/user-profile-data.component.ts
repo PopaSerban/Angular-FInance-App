@@ -5,11 +5,15 @@ import { UserDataService } from 'src/app/Services/userData.service';
 import { UserInformation } from 'src/app/shared/models/userInformation.model';
 
 import countryCodes from './Json/CountryCodes.json';
+import stateCodes from './Json/StateCountry.json';
 
 interface CountryCodes{
   name: string,
   dial_code: string,
   code:string
+}
+interface StateCodes{
+  name: string
 }
 
 @Component({
@@ -19,6 +23,7 @@ interface CountryCodes{
 })
 export class UserProfileDataComponent implements OnInit, OnDestroy {
   countryCodesList: CountryCodes[]=countryCodes;
+  stateCodesList: StateCodes[] = stateCodes;
   shouldShowStateCode: Boolean = false;
   changingPassword: Boolean = false;
   passwordIsValid: Boolean = false;
@@ -41,16 +46,16 @@ export class UserProfileDataComponent implements OnInit, OnDestroy {
   private InitForm(){
     console.log(this.userData.Email.length !=0)
     this.userDataProfileForm = this.formBuilder.group({
-      Firstname:[''],
-      Surname:[''],
-      Email: [{value:'', disabled: (this.userData.Email.length !=0)}, Validators.email],
+      Firstname:['', Validators.required],
+      Surname:['', Validators.required],
+      Email: [{value:'', disabled: (this.userData.Email.length !=0)}, [Validators.email,Validators.required]],
       Password:[''],
       Adress:['', Validators.minLength(5)],
-      City: ['',Validators.minLength(4)],
+      City: ['',[Validators.minLength(4),Validators.required]],
       State:[''],
-      Zip:[''],
+      Zip:['',[Validators.pattern(/^\d+$/),Validators.required]],
       CountryCode:[''],
-      Number:[''],
+      Number:['',[Validators.pattern(/^\d+$/), Validators.required]],
     });
   };
   private FillFormWithUserData(userData: UserInformation){
@@ -61,6 +66,8 @@ export class UserProfileDataComponent implements OnInit, OnDestroy {
     this.userDataProfileForm.controls['City'].setValue(this.userData.City);
     this.userDataProfileForm.controls['Zip'].setValue(this.userData.Zipcode);
     this.userDataProfileForm.controls['Number'].setValue(this.userData.Phone);
+    this.userDataProfileForm.controls['State'].setValue(this.userData.State);
+    this.userDataProfileForm.controls['CountryCode'].setValue(this.userData.CountryCode);
   }
   OnSubmit(){
     this.userDataService.LoggedUserDataPartial({
@@ -69,7 +76,9 @@ export class UserProfileDataComponent implements OnInit, OnDestroy {
       adress: this.userDataProfileForm.controls['Adress'].value,
       city: this.userDataProfileForm.controls['City'].value,
       zipcode: this.userDataProfileForm.controls['Zip'].value,
-      phone: this.userDataProfileForm.controls['Number'].value
+      phone: this.userDataProfileForm.controls['Number'].value,
+      state: this.userDataProfileForm.controls['State'].value,
+      countryCode: this.userDataProfileForm.controls['CountryCode'].value
     });
   };
   private InitialiseUserDataSync(){
@@ -78,11 +87,11 @@ export class UserProfileDataComponent implements OnInit, OnDestroy {
     });
   }
   private SubscribeUserDataService(){
-    this.userDataServiceSubscription = this.userDataService.userDataChanged.subscribe(
-      (userDataChanged:UserInformation)=>{
-        this.userData = userDataChanged;
-    },error=>{
-      console.log(error);
+    this.userDataServiceSubscription = this.userDataService.userDataChanged.subscribe({
+      next: userdataChanged=>{
+        this.userData = userdataChanged;
+      },
+      error: error=> console.log(error)
     });
   }
 

@@ -8,9 +8,10 @@ export class UserInformation{
      private email: string='';
      private adress: string='';
      private city: string='';
-     private country: string='';
      private zipcode: string='';
      private phone: string='';
+     private state: string='';
+     private countryCode:string ='';
 
     constructor(){}
 
@@ -64,13 +65,20 @@ export class UserInformation{
     public set City(value : string) {
         this.city = value;
     }
-    public get Country() : string {
-        return this.country;
+    public get State(): string{
+        return this.state;
     }
-    
-    public set Country(value : string) {
-        this.country = value;
+    public set State(value:string){
+        this.state = value;
     }
+
+    public get CountryCode(): string{
+        return this.countryCode;
+    }
+    public set CountryCode(value:string){
+        this.countryCode = value;
+    }
+
     public get Zipcode() : string {
         return this.zipcode;
     }

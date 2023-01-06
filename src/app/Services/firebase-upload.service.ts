@@ -10,7 +10,6 @@ export class FireBaseUploadService {
 
   public UploadFileToFireBase(file: File): AngularFireUploadTask{
     const filePath = `${file.name}`;
-    const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     return task;
   }

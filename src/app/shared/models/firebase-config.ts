@@ -1,5 +1,5 @@
 import { FirebaseApp, initializeApp } from "firebase/app";
-import { FirebaseStorage, getStorage, getStream } from "firebase/storage";
+import { FirebaseStorage, getStorage } from "firebase/storage";
 
 export class FireBaseCnfg{
     firebaseConfig = {storageBucket: 'gs://budget-app-77595.appspot.com'};

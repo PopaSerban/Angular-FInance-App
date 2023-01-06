@@ -14,3 +14,7 @@
 input:read-only {
     background-color: #EBEBE4;
 }
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched{
+    border: 2px solid red;
+  }
