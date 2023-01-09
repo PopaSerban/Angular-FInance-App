@@ -1,0 +1,19 @@
+.profile-picture{
+    border-radius: 5px;
+    border-color: black;
+    
+}
+.user-information{
+    padding-left: 2rem;
+}
+
+.search-div {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0.375rem 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }

@@ -26,7 +26,8 @@ export class FireBaseUserTransactionsService{
                 amount: data['amount'],
                 category: data['category'],
                 date: data['date'],
-                notes:data['notes']
+                notes:data['notes'],
+                userProfilePic: data['userProfilePic']
               } as iTransaction);
             });
           });

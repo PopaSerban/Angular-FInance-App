@@ -1,6 +1,7 @@
 <h2 class="Welcome">Welcome to chat rooms!</h2>
 
-<div class="container align-items-center justify-content-center" id="welcome">
+
+<div *ngIf="!roomsAvailable" class="container align-items-center justify-content-center" id="welcome">
     <div class="card">
       <div class="card-body text-center">
         <h3 class="card-title fw-bolder">What are chat rooms?</h3>
@@ -8,4 +9,8 @@
         <button type="button" class="btn btn-primary btn-block" (click)="OnSubmit()">Add Room</button>
       </div>
     </div>
+  </div>
+  <app-room-display *ngIf="roomsAvailable" [roomsList]="roomsList"></app-room-display>
+  <div *ngIf="roomsAvailable" class="container roomAdd align-items-center justify-content-center">
+    <button type="button" class="btn btn-primary btn-circle " (click)="OnSubmit()">+</button>
   </div>

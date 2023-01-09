@@ -1,7 +1,21 @@
-<input type="text"  class="form-control mr-sm-2" type="text" placeholder="Search record.." aria-label="Search">
-    <button (click)="search()">Search</button>
-    <ul>
-        <li *ngFor="let user of usersList"> {{user.Name}}</li>
-    </ul>
-
-    <div *ngIf="true"> pula</div>
+<form class="form-inline my-2 my-lg-0">
+    <div class="selected-user" *ngIf="selectedUser">
+        <div class="form-control search-div">
+            <button type="button" class="btn btn-secondary btn-sm" (click)="deselectUser()">{{ selectedUser.Email }} x</button>
+          </div>
+    </div>
+    <input class="form-control" type="search" id="searchInput" [(ngModel)]="searchTerm" (ngModelChange)="OnSearch()"
+    [ngModelOptions]="{standalone: true}" placeholder="Search" aria-label="Search" *ngIf="!selectedUser">
+  </form>
+  <ul class="list-group mt-3">
+    <li *ngFor="let user of filteredUsers" class="list-group-item d-flex align-items-center" (click)="selectUser(user)">
+      <img [src]="user.ProfilePicture ? user.ProfilePicture : altImage" alt="Missing" class="profile-picture rounded-circle mr-3" style="width: 50px; height: 50px;">
+      <div class="user-information">
+        <small class="d-block mt-1"><strong>Name:</strong> {{ user.Name }} {{user.Surname}}</small>
+        <small class="d-block mt-1"><strong>Email:</strong> {{ user.Email }}</small>
+      </div>
+    </li>
+  </ul>
+  
+  
+  

@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { FirestoreModule } from '@angular/fire/firestore';
 import { SpendingsPopUpComponent } from './spendings-pop-up/spendings-pop-up.component';
+
 @NgModule({
   declarations: [
     PieChartComponent,

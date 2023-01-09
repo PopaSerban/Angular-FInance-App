@@ -19,6 +19,7 @@ import { BudgetRoomComponent } from './budget-room/budget-room.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { MatCardModule} from '@angular/material/card'
 import { FinancialStatisticsModule } from '../financial-statistics/financial-statistics.module';
+import { FriendsRoomsModule } from '../friends-rooms/friends-rooms.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { FinancialStatisticsModule } from '../financial-statistics/financial-sta
     MatProgressBarModule,
     MatButtonModule,
     InfiniteScrollModule,
-    FinancialStatisticsModule,
+    FinancialStatisticsModule
   ],
 })
 export class MainScreenModule { }

@@ -29,6 +29,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 
     ],
     imports: [
+        NgbModule,
         LoginModule,
         MainScreenModule,
         BrowserModule,
@@ -46,7 +47,6 @@ import { AngularFireModule } from '@angular/fire/compat';
         MatIconModule,
         MatListModule,
         AngularFireModule.initializeApp(environment.firebase),
-        NgbModule,
     ],
     providers: [CookieService],
     bootstrap: [AppComponent]

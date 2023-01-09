@@ -1,0 +1,38 @@
+
+  <div class="container">
+    <div *ngFor="let room of roomsList" class="row justify-content-md-center" style="padding: 15px;">
+        <div class="card-wrapper" >
+            <mat-card class="example-card mat-elevation-z8">
+              <mat-card-header>
+                <mat-card-title>{{ room.name }}</mat-card-title>
+                <mat-card-subtitle>{{ room.description }}</mat-card-subtitle>
+              </mat-card-header>
+                  <div class="container flex-row">
+                      <div class="row justify-content-md-center" style="align-items: center;">
+                          <h1 style="align-items: center;"><i *ngFor="let users of room.users" class="bi bi-person-fill"></i></h1>
+                      </div>
+                  </div>
+              <mat-card-content>
+                    <div class="flex-row">
+                        <div *ngFor="let user of room.users let indexName=index " [ngClass]="indexName%2==0 ? 'User1': 'User2'">
+                          <div mat-card-avatar class="header-image-user"
+                          [style.background-image]="'url(' + (user.id===UserID ? user.profilePicture : room.users[indexName === 1 ? 1 : 0].profilePicture) + ')'"></div>
+                          <span>{{user.name}}</span>
+                        </div>      
+                  </div>
+              </mat-card-content>      
+              <mat-card-actions>
+                <button mat-raised-button color="accent">ACCESS</button>
+                <button mat-raised-button color="primary">DELETE</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+    </div> 
+</div>
+<div
+  infinite-scroll
+  [infiniteScrollDistance]="distance"
+  [infiniteScrollThrottle]="throttle"
+  (scrolled)="OnScroll()"
+>   
+</div>

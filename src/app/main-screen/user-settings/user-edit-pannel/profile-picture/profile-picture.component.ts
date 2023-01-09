@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseRoomsService } from 'src/app/friends-rooms/Services/firebase-rooms.service';
 import { FireBaseDatabaseService } from 'src/app/Services/firebase-database.service';
 import { FireBaseUploadService } from 'src/app/Services/firebase-upload.service';
 import { UserDataService } from 'src/app/Services/userData.service';
@@ -22,7 +23,7 @@ export class ProfilePictureComponent implements OnInit {
     private readonly firebaseDatabaseService: FireBaseDatabaseService,
     private readonly userDataService: UserDataService,
     private firebaseUploadService: FireBaseUploadService,
-    private userSettingsService: UserSettingsService) { }
+    private userSettingsService: UserSettingsService,) { }
 
   
   ngOnInit(): void {
@@ -51,7 +52,7 @@ export class ProfilePictureComponent implements OnInit {
                 this.firebaseDatabaseService.UpdateUserData(userData.Id, userData).subscribe();
               });
               // Change the user's profile picture in the user settings service
-              this.userSettingsService.ChangeUserProfilePicture(downloadURL);
+              this.userSettingsService.ChangeUserProfilePicture(downloadURL);     
               // Update the local profile picture URL
               this.profilePictureUrl = downloadURL;
           this.loading = false

@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, tap } from "rxjs";
+import { FirebaseRoomsService } from "../friends-rooms/Services/firebase-rooms.service";
 import { UserInformation } from "../shared/models/userInformation.model";
 import { CookiesService } from "./Cookies/cookies.service";
 
@@ -12,14 +13,17 @@ import { CookiesService } from "./Cookies/cookies.service";
 
     constructor(
         private readonly httpRequest:HttpClient,
-        private readonly cookieService: CookiesService){}
+        private readonly cookieService: CookiesService,
+        private readonly firebaseRoomsService: FirebaseRoomsService){}
 
     RegisterUser(userData: UserInformation){
+        this.cookieService.DeleteAllCookies();
         this.cookieService.setCookieMultipleData(userData);
         return this.httpRequest.put(`https://budget-app-77595-default-rtdb.firebaseio.com/users/`+userData.Id+`.json`,userData);
     }
 
     GetUserData(userId: number){
+        this.cookieService.DeleteAllCookies();
         return this.httpRequest.get<UserInformation>(`https://budget-app-77595-default-rtdb.firebaseio.com/users/${userId}.json`)
         .pipe(tap(userDataResponse=> this.cookieService.setCookieMultipleData(userDataResponse)),
         map(userDataResponse=> Object.assign(new UserInformation, userDataResponse)));
@@ -27,6 +31,7 @@ import { CookiesService } from "./Cookies/cookies.service";
 
     UpdateUserData(userId: string, userData: UserInformation){
         this.cookieService.setCookieMultipleData(userData);
+        this.firebaseRoomsService.UpdateUserRoomsName(userId,userData.Surname);
         return this.httpRequest.patch(`https://budget-app-77595-default-rtdb.firebaseio.com/users/${userId}.json`, userData);
     }
 
