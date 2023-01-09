@@ -1,6 +1,16 @@
 # AngularBudgetApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+Budget Tracking App (Angular, Firebase)
+
+ -Developed a budget tracking application using Angular and Firebase as the backend, demonstrating my ability to build web applications from scratch
+ -Implemented login and authentication features using Firebase's authentication services
+ -Created forms for users to input and track their expenses.
+ -Added people search and room creation between friends
+ -Rooms are a place where people can chat and share their experiences.
+ -Utilized best practices for design and development, including the use of components, services, and routing
+ -Deployed the application to a live server( to do)
+
+Application best seen on Mobile!
 
 ## Development server
 
