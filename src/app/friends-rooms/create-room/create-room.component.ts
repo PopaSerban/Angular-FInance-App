@@ -39,16 +39,15 @@ export class CreateRoomComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     console.log(this.form.value);
-    this.selectedUser
     const roomData: IRoomData = {
       roomId: this.form.controls['roomId'].value,
       name: this.form.controls['roomName'].value,
       description: this.form.controls['description'].value,
       users: [this.activeUser, this.selectedUser]
     };
-    this.firebaseRoomsService.CreateRoom(roomData);
+    await this.firebaseRoomsService.CreateRoom(roomData);
     this.router.navigate(['budgetRooms'])
 
   }
@@ -71,7 +70,5 @@ export class CreateRoomComponent implements OnInit {
     this.form.controls['userProfilePic'].setValue(user.ProfilePicture);
     this.form.controls['roomId'].setValue(`${this.activeUser.id}${this.selectedUser.id}`);
     this.form.controls['userNames'].setValue([this.activeUser.name,this.selectedUser.name]);
-
-    console.log(user.ID);
   }
 }

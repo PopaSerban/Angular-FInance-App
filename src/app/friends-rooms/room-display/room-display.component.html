@@ -22,8 +22,8 @@
                   </div>
               </mat-card-content>      
               <mat-card-actions>
-                <button mat-raised-button color="accent">ACCESS</button>
-                <button mat-raised-button color="primary">DELETE</button>
+                <button mat-raised-button color="accent" (click)="OnAccess(room.roomId)">ACCESS</button>
+                <button mat-raised-button color="primary"(click)="OnDelete(room.roomId)">DELETE</button>
               </mat-card-actions>
             </mat-card>
           </div>

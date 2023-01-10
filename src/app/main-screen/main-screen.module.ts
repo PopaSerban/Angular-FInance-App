@@ -15,7 +15,6 @@ import { PasswordStrengthComponent } from './password-strength/password-strength
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { DashboardContainerComponent } from './dashboard-container/dashboard-container.component';
-import { BudgetRoomComponent } from './budget-room/budget-room.component';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { MatCardModule} from '@angular/material/card'
 import { FinancialStatisticsModule } from '../financial-statistics/financial-statistics.module';
@@ -29,7 +28,6 @@ import { FriendsRoomsModule } from '../friends-rooms/friends-rooms.module';
     UserProfileDataComponent,
     PasswordStrengthComponent,
     DashboardContainerComponent,
-    BudgetRoomComponent
   ],
   imports: [
     CommonModule,

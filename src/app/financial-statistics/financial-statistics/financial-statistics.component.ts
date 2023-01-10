@@ -19,7 +19,6 @@ export class FinancialStatisticsComponent implements OnInit {
     this.tabNumber = $event.index
   }
   OnSwipe(evt:any){
-    console.log('Cakked')
     console.log(evt);
     const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? 1 : -1):0;
     this.tabNumber = this.tabNumber+x;

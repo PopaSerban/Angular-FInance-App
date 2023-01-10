@@ -19,8 +19,6 @@ export class CookiesService {
                 this.cookieService.set(key, dataObject[key]);
             }
         }
-        console.log('MULTIPLE COOKIES SET');
-        console.log(this.cookieService.getAll());
     }
     DeleteCookieData(dataKey: string){
         this.cookieService.delete(dataKey);
@@ -29,7 +27,6 @@ export class CookiesService {
         return this.cookieService.get(dataKey);
     }
     GetAllCookieData(){
-        console.log(this.cookieService.getAll());
         return this.cookieService.getAll();
     }
     DeleteAllCookies(){

@@ -44,7 +44,6 @@ export class UserProfileDataComponent implements OnInit, OnDestroy {
   }
 
   private InitForm(){
-    console.log(this.userData.Email.length !=0)
     this.userDataProfileForm = this.formBuilder.group({
       Firstname:['', Validators.required],
       Surname:['', Validators.required],

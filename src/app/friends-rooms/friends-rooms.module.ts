@@ -9,6 +9,7 @@ import { RoomDisplayComponent } from './room-display/room-display.component';
 import { MatCardModule } from '@angular/material/card';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatButtonModule } from '@angular/material/button';
+import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
     RoomsMainScreenComponent,
     SearchUserBarComponent,
     CreateRoomComponent,
-    RoomDisplayComponent
+    RoomDisplayComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

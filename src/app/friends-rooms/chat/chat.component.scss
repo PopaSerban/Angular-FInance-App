@@ -1,0 +1,83 @@
+.chat-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    height: 87%;
+    flex-direction: column;
+    //padding-bottom: 12%;
+  }
+  
+  .messages-container {
+    flex: 1;
+    //overflow-y: auto;
+    overflow-y: auto;
+  }
+  
+  .message-item {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 8px;
+  }
+  
+  .message-bubble {
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .sent-by-me {
+    align-self: flex-end;
+    background-color: #f0f0f0;
+    margin-left: auto;
+  }
+  
+  .sent-by-other {
+    align-self: flex-start;
+    background-color: #e5e5e5;
+    margin-right: auto;
+  }
+  
+  .profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+  
+  .message-input-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    background-color: #f0f0f0;
+  }
+  
+  .message-input {
+    flex: 1;
+    width: 80%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    margin-right: 8px;
+  }
+  
+  .send-button {
+    background-color: #4267b2;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  form{
+      width: 80%;
+  }

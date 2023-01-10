@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Console } from 'console';
+import { Observable, Subject } from 'rxjs';
 import { CookiesService } from 'src/app/Services/Cookies/cookies.service';
 import { IRoomData } from '../Models/IRoomData';
 import { IRoomUser } from '../Models/IRoomUser';
+import { FirebaseChatService } from './firebase-chat.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseRoomsService {
   private UserId: string = ''
+  private roomsSubject = new Subject<IRoomData[]>();
 
   constructor(private readonly firestoreDatabaseService: AngularFirestore,
+    private readonly firestoreChatService: FirebaseChatService,
     private readonly cookieService: CookiesService) { 
-      this.UserId = this.cookieService.GetCookieData('id');
+      this.UserId = '';
       this.GetUserRooms();
     }
 
@@ -29,6 +32,12 @@ export class FirebaseRoomsService {
     return roomExists;
   }
   async CreateRoom(roomData:IRoomData){
+    const querySnapshot = await this.firestoreDatabaseService.collection('Rooms').ref.get();
+    querySnapshot.forEach(room=>{
+        if(room.id.includes(roomData.roomId)){
+          roomData.roomId = roomData.roomId+'1';
+        }
+      });
     await this.firestoreDatabaseService.collection('Rooms').doc(roomData.roomId).set(roomData);
   }
 
@@ -37,14 +46,11 @@ export class FirebaseRoomsService {
     const rooms: IRoomData[] = [];
     const querySnapshot = await this.firestoreDatabaseService.collection('Rooms').ref.get();
     querySnapshot.forEach(room=>{
-        console.log("Checking room ids"+room.id);
-        
         if(room.id.includes(this.UserId)){
-          console.log(this.UserId+" is included in "+room.id);
           const data = room.data() as {[key: string]: any};
           rooms.push({
             roomId: room.id,
-            name: data['roomName'],
+            name: data['name'],
             description: data['description'],
             users: data['users']
           } as IRoomData)}
@@ -68,8 +74,6 @@ export class FirebaseRoomsService {
   }
 
   async UpdateUserRoomsName(userId:string, userName: string){
-    console.log("User id length = "+ userId.length);
-    console.log('Name '+userName);
     const querySnapshot = await this.firestoreDatabaseService.collection('Rooms').ref.get();
     querySnapshot.forEach(room=>{
         if(room.id.includes(userId)){
@@ -83,8 +87,13 @@ export class FirebaseRoomsService {
           });
         }
       });
-
   }
+
+  async DeleteSelectedRoom(roomId: string){
+    this.firestoreChatService.DeleteMessages(roomId);
+    await this.firestoreDatabaseService.collection('Rooms').doc(roomId).delete();
+  }
+
 
 
 }

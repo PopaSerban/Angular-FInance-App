@@ -16,7 +16,6 @@ import { FireBaseDatabaseService } from "./firebase-database.service";
         }
 
       get GetLoggedUserData(): Observable<UserInformation>{
-        console.log('getting localuserdata');
         console.log(this._loggedUserData);
         const loggedUserData = of(this._loggedUserData);
         return loggedUserData;
