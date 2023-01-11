@@ -1,4 +1,5 @@
 # AngularBudgetApp
+Still in development, adding features and bug fixing in my free time.
 
 Budget Tracking App (Angular, Firebase)
 
@@ -13,7 +14,8 @@ Budget Tracking App (Angular, Firebase)
 Application best seen on Mobile!
 ## Links
 
-[link to app](http://google.com) WIP
+[Application link](https://budget-app-77595.web.app/)
+Recomended to be oppened in mobile. Some features are not scalling good in desktop. Those will be fixed at a later date.
 
 ## Development server
 
